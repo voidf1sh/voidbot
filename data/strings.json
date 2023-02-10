@@ -1,0 +1,21 @@
+{
+	"help": {
+		"info": "",
+		"setup": "",
+		"permissions": ""
+	},
+	"embeds": {
+		"footer": "",
+		"color": "0x55FF55"
+	},
+	"emoji": {
+		"next": "⏭️",
+		"previous": "⏮️",
+		"confirm": "☑️",
+		"cancel": "❌"
+	},
+	"urls": {
+		"avatar": ""
+	},
+	"temp": {}
+}
