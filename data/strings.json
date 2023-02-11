@@ -5,17 +5,26 @@
 		"permissions": ""
 	},
 	"embeds": {
-		"footer": "",
-		"color": "0x55FF55"
+		"footer": "Have a great day!",
+		"color": "0x5555FF",
+		"rulesTitle": "voidf1sh Development Server Rules",
+		"rules": "1. Show respect\n2. No politics\n3. No spam or self-promotion (server invites, advertisements, etc) without permission from a staff member. This includes DMing fellow members.\n4. No age-restricted or obscene content. This includes text, images, or links featuring nudity, sex, hard violence, or other graphically disturbing content.\n5. If you see something against the rules or something that makes you feel unsafe, let staff know. We want this server to be a welcoming space!",
+		"rulesFooter": "Use the Accept Rules button to gain access to the rest of the server.",
+		"roleMenuTitle": "Role Menu",
+		"treeRoleMenu": "Use the buttons below to give yourself roles.\n\n``💧`` - <@&1069416740389404763>: Get notifications when the tree is ready to be watered.\n``🍎`` - <@&1073698485376921602>: Get notifications when fruit is falling from the tree.",
+		"roleMenuFooter": "Tip: Tap the button again to remove the role."
 	},
 	"emoji": {
 		"next": "⏭️",
 		"previous": "⏮️",
 		"confirm": "☑️",
-		"cancel": "❌"
+		"cancel": "❌",
+		"water": "💧",
+		"fruit": "🍎"
 	},
-	"urls": {
-		"avatar": ""
-	},
-	"temp": {}
+	"roleIds": {
+		"member": "1048328885118435368",
+		"waterPings": "1069416740389404763",
+		"fruitPings": "1073698485376921602"
+	}
 }

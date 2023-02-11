@@ -4,7 +4,7 @@ dotenv.config();
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const clientId = process.env.clientId;
+const clientId = process.env.BOTID;
 const token = process.env.TOKEN;
 const fs = require('fs');
 
@@ -12,13 +12,13 @@ const commands = [];
 const commandFiles = fs.readdirSync('./slash-commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const command = require(`./slash-commands/${file}`);
+	const command = require(`../slash-commands/${file}`);
 	if (command.data != undefined) {
 		commands.push(command.data.toJSON());
 	}
 }
 
-console.log(commands);
+// console.log(commands);
 
 const rest = new REST({ version: '9' }).setToken(token);
 

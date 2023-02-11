@@ -4,33 +4,29 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const token = process.env.TOKEN;
-const statusChannelId = process.env.statusChannelId;
 
 // Discord.JS
-const { Client, GatewayIntentBits, Partials } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({
 	intents: [
-		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildMessages,
-		GatewayIntentBits.GuildMessageReactions,
-		GatewayIntentBits.MessageContent
-	],
-	partials: [
-		Partials.Channel,
-		Partials.Message
-	],
+		GatewayIntentBits.Guilds
+	]
 });
 
 // Various imports
 const fn = require('./modules/functions.js');
 const strings = require('./data/strings.json');
-const isDev = process.env.isDev;
+const isDev = process.env.DEBUG;
+const statusChannelId = process.env.STATUSCHANNELID;
 
 client.once('ready', () => {
-	fn.collections.slashCommands(client);
+	// Build a collection of slash commands for the bot to use
+	fn.collectionBuilders.slashCommands(client);
 	console.log('Ready!');
 	client.channels.fetch(statusChannelId).then(channel => {
 		channel.send(`${new Date().toISOString()} -- Ready`);
+	}).catch(err => {
+		console.error("Error sending status message: " + err);
 	});
 });
 
@@ -42,13 +38,29 @@ client.on('interactionCreate', async interaction => {
 		if (client.slashCommands.has(commandName)) {
 			client.slashCommands.get(commandName).execute(interaction);
 		} else {
-			interaction.reply('Sorry, I don\'t have access to that command.');
+			interaction.reply('Sorry, I don\'t have access to that command.').catch(err => console.error(err));
 			console.error('Slash command attempted to run but not found: /' + commandName);
 		}
-	}
-
-	if (interaction.isButton() && interaction.component.customId == 'refresh') {
-		fn.refresh(interaction);
+	} else if (interaction.isButton()) {
+		switch (interaction.component.customId) {
+			case 'acceptrules':
+				await fn.buttonHandlers.acceptRules(interaction).catch(err => {
+					console.error("Error handling rule acceptance: " + err);
+				});
+				break;
+			case 'waterpingrole':
+				await fn.buttonHandlers.waterPing(interaction).catch(err => {
+					console.error("Error handling water ping button: " + err);
+				});
+				break;
+			case 'fruitpingrole':
+				await fn.buttonHandlers.fruitPing(interaction).catch(err => {
+					console.error("Error handling fruit ping button: " + err);
+				});
+				break;
+			default:
+				break;
+		}
 	}
 });
 

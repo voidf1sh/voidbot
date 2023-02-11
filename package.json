@@ -1,0 +1,24 @@
+{
+  "name": "voidbot",
+  "version": "1.0.0",
+  "description": "voidf1sh Development Server Support Bot",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voidf1sh/voidbot.git"
+  },
+  "author": "Skylar Grant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/voidf1sh/voidbot/issues"
+  },
+  "homepage": "https://github.com/voidf1sh/voidbot#readme",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "string.prototype.replaceall": "^1.0.7"
+  }
+}
