@@ -2,8 +2,6 @@ name: Voidbot Dockerization
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [ "main" ]
     
 env:
   DHUB_UNAME: ${{ secrets.DHUB_UNAME }}
